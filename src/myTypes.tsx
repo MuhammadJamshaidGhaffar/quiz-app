@@ -9,13 +9,16 @@ export enum State {
   continue,
   fetching,
   newGame,
+  optionSelected,
 }
 
-export type Questions = {
+export type Question = {
   category: string;
   correct_answer: string;
   difficulty: string;
   incorrect_answers: string[];
   question: string;
   type: string;
+  answers: string[];
+  correct_option: number;
 };
