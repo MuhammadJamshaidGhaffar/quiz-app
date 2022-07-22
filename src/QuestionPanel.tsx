@@ -1,5 +1,5 @@
 import React from "react";
-import { Question } from "./myTypes";
+import { Question, State } from "./myTypes";
 
 type propsT = {
   questionNo: number;
@@ -10,6 +10,7 @@ type propsT = {
   question: Question;
   selectedOption: number;
   updateSelectedOption: any;
+  updateState: any;
 };
 
 const QuestionPanel: React.FC<propsT> = (props) => {
@@ -30,9 +31,13 @@ const QuestionPanel: React.FC<propsT> = (props) => {
                 className="option"
                 key={index}
                 onClick={(event) => {
+                  console.log("clicked on option");
                   props.updateSelectedOption(index);
                   if (props.question.correct_option == index)
                     props.updateScore(props.score + 1);
+                  if (props.questionNo + 1 == props.totalQuestions) {
+                    props.updateState(State.end);
+                  }
                 }}
               >
                 {elm}
@@ -72,9 +77,18 @@ const QuestionPanel: React.FC<propsT> = (props) => {
         })}
       </div>
       {
-        //------ if option selected then display next question btn
+        //------ if option selected and question is not last then display next question btn
+        props.questionNo + 1 != props.totalQuestions &&
         props.selectedOption != -1 ? (
-          <button className="next-question-btn">Next Question</button>
+          <button
+            className="next-question-btn"
+            onClick={() => {
+              props.updateQuestionNo(props.questionNo + 1);
+              props.updateSelectedOption(-1);
+            }}
+          >
+            Next Question
+          </button>
         ) : (
           ""
         )

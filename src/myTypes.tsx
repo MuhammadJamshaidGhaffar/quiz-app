@@ -4,12 +4,11 @@ export enum Difficulty {
   HARD = "hard",
 }
 export enum State {
-  start,
-  end,
-  continue,
-  fetching,
-  newGame,
-  optionSelected,
+  start, //1st time start
+  end, //game ended
+  continue, //questions continued
+  fetching, //fetching questions from api
+  newGame, // new game has started --- to prevent multiple fetching
 }
 
 export type Question = {
