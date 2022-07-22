@@ -21,6 +21,23 @@ html {
   text-align: center;
   width: 40rem;
 }
+
+.start-btn {
+  cursor: pointer;
+  background: linear-gradient(rgb(255, 255, 255), rgb(255, 204, 145));
+  border: 2px solid rgb(211, 133, 88);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 10px;
+  border-radius: 10px;
+  height: 40px;
+  margin: 20px 0px;
+  padding: 0px 40px;
+}
+
+.loading {
+  margin-top: 3rem;
+  font-size: 2rem;
+}
+
 h1 {
   font-size: 6rem;
   margin-top: 1rem;
