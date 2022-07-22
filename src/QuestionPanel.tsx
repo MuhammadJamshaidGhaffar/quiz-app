@@ -14,7 +14,6 @@ type propsT = {
 };
 
 const QuestionPanel: React.FC<propsT> = (props) => {
-  function displayOption() {}
   return (
     <div>
       <div className="question-panel">
@@ -25,7 +24,7 @@ const QuestionPanel: React.FC<propsT> = (props) => {
         {/*----------------- rendering option ---------------------- */}
         {props.question.answers.map((elm, index) => {
           // ---- if option not selected
-          if (props.selectedOption == -1) {
+          if (props.selectedOption === -1) {
             return (
               <button
                 className="option"
@@ -33,9 +32,9 @@ const QuestionPanel: React.FC<propsT> = (props) => {
                 onClick={(event) => {
                   console.log("clicked on option");
                   props.updateSelectedOption(index);
-                  if (props.question.correct_option == index)
+                  if (props.question.correct_option === index)
                     props.updateScore(props.score + 1);
-                  if (props.questionNo + 1 == props.totalQuestions) {
+                  if (props.questionNo + 1 === props.totalQuestions) {
                     props.updateState(State.end);
                   }
                 }}
@@ -45,11 +44,11 @@ const QuestionPanel: React.FC<propsT> = (props) => {
             );
           }
           //----- if current rendering option is our selected option
-          else if (index == props.selectedOption) {
+          else if (index === props.selectedOption) {
             return (
               <button
                 className={
-                  props.selectedOption == props.question.correct_option
+                  props.selectedOption === props.question.correct_option
                     ? "correct-option"
                     : "incorrect-option"
                 }
@@ -64,7 +63,7 @@ const QuestionPanel: React.FC<propsT> = (props) => {
             return (
               <button
                 className={
-                  index == props.question.correct_option
+                  index === props.question.correct_option
                     ? "correct-option"
                     : "option"
                 }
@@ -78,8 +77,8 @@ const QuestionPanel: React.FC<propsT> = (props) => {
       </div>
       {
         //------ if option selected and question is not last then display next question btn
-        props.questionNo + 1 != props.totalQuestions &&
-        props.selectedOption != -1 ? (
+        props.questionNo + 1 !== props.totalQuestions &&
+        props.selectedOption !== -1 ? (
           <button
             className="next-question-btn"
             onClick={() => {

@@ -37,20 +37,20 @@ function App() {
       updateQuestions(questionsData);
       updateState(State.continue);
     }
-    if (state == State.newGame) {
+    if (state === State.newGame) {
       getData(Difficulty.EASY, totalQuestions);
     }
   });
 
   function showPanel() {
-    if (state == State.fetching) {
+    if (state === State.fetching) {
       return <p className="loading">Loading Question ...</p>;
-    } else if (state == State.continue || state == State.end) {
+    } else if (state === State.continue || state === State.end) {
       return (
         <>
           {
             //----- checking if game has ended
-            state == State.end ? (
+            state === State.end ? (
               <button
                 className="start-btn"
                 onClick={() => {
@@ -77,7 +77,7 @@ function App() {
           />
         </>
       );
-    } else if (state == State.start) {
+    } else if (state === State.start) {
       return (
         <button
           className="start-btn"
